@@ -1,26 +1,478 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-geist-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.16 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.16 0 0);
+  --primary: oklch(0.2 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.965 0 0);
+  --secondary-foreground: oklch(0.22 0 0);
+  --muted: oklch(0.965 0 0);
+  --muted-foreground: oklch(0.52 0 0);
+  --accent: oklch(0.955 0 0);
+  --accent-foreground: oklch(0.22 0 0);
+  --destructive: oklch(0.58 0.24 27);
+  --border: oklch(0.91 0 0);
+  --input: oklch(0.89 0 0);
+  --ring: oklch(0.62 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.56 0 0);
+  --chart-3: oklch(0.44 0 0);
+  --chart-4: oklch(0.37 0 0);
+  --chart-5: oklch(0.27 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.14 0.012 270);
+  --foreground: oklch(0.93 0.012 82);
+  --card: oklch(0.18 0.014 270);
+  --card-foreground: oklch(0.93 0.012 82);
+  --popover: oklch(0.205 0.016 270);
+  --popover-foreground: oklch(0.93 0.012 82);
+  --primary: oklch(0.78 0.11 74);
+  --primary-foreground: oklch(0.16 0.012 270);
+  --secondary: oklch(0.225 0.014 270);
+  --secondary-foreground: oklch(0.91 0.012 82);
+  --muted: oklch(0.21 0.014 270);
+  --muted-foreground: oklch(0.67 0.014 270);
+  --accent: oklch(0.255 0.02 270);
+  --accent-foreground: oklch(0.95 0.01 82);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(0.3 0.016 270);
+  --input: oklch(0.225 0.014 270);
+  --ring: oklch(0.76 0.1 74);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
   }
 }
 
-body {
+.app-frame {
+  min-height: 100svh;
   background: var(--background);
+}
+
+.page-shell {
+  width: min(100% - 2.5rem, 68rem);
+  margin-inline: auto;
+}
+
+.app-header {
+  background: var(--background);
+}
+
+.header-inner,
+.toolbar,
+.filter-scroll,
+.section-heading,
+.result-summary,
+.recommendation-meta,
+.recommendation-card [data-slot="card-footer"] {
+  display: flex;
+  align-items: center;
+}
+
+.header-inner {
+  min-height: 4rem;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.wordmark {
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 680;
+  letter-spacing: -0.035em;
+}
+
+.page-main {
+  padding-block: 4.5rem 6rem;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.intro h1 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 620;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+.intro p {
+  color: var(--muted-foreground);
+  font-size: 0.95rem;
+}
+
+.toolbar {
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.search-control {
+  width: min(100%, 19rem);
+  height: 2.25rem;
+  border-color: transparent;
+  background: var(--card);
+}
+
+.filter-scroll {
+  gap: 0.75rem;
+}
+
+.genre-select {
+  width: 8.5rem;
+}
+
+.filter-scroll [data-slot="toggle-group-item"]:has(.service-logo) {
+  min-width: 2.5rem;
+}
+
+.section-heading {
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-heading h2 {
+  font-size: 0.9rem;
+  font-weight: 620;
+}
+
+.result-summary {
+  gap: 0.25rem;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.recommendation-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.recommendation-group {
+  min-width: 0;
+}
+
+.group-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.group-heading h3 {
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  font-weight: 620;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.group-heading span {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+}
+
+.recommendation-card {
+  min-height: 29rem;
+  min-width: 0;
+  padding-top: 0;
+  box-shadow: none;
+  transition: background-color 160ms ease;
+}
+
+.recommendation-artwork {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  flex: 0 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background: var(--muted);
+}
+
+.recommendation-artwork img {
+  object-fit: cover;
+}
+
+.recommendation-card [data-slot="card-title"] {
+  padding-right: 2rem;
+  font-size: 1.1rem;
+  letter-spacing: -0.025em;
+}
+
+.recommendation-card [data-slot="card-description"] {
+  line-height: 1.45;
+}
+
+.recommendation-description {
+  display: -webkit-box;
+  overflow: hidden;
+  min-height: 3.8rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.recommendation-description.is-expanded {
+  display: block;
+  min-height: 0;
+  -webkit-line-clamp: unset;
+}
+
+.description-disclosure {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.description-toggle {
+  margin-left: -0.5rem;
+  color: var(--foreground);
+}
+
+.recommendation-details {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.recommendation-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.recommendation-meta {
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--muted-foreground);
+  font-size: 0.7rem;
+}
+
+.recommendation-card [data-slot="card-footer"] {
+  min-height: 3.25rem;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-top: 0;
+  background: transparent;
+  color: var(--muted-foreground);
+  font-size: 0.7rem;
+}
+
+.streaming-availability {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.provider-mark {
+  display: grid;
+  overflow: hidden;
+  flex: 0 0 auto;
+  width: 1.5rem;
+  height: 1.5rem;
+  place-items: center;
+  border-radius: 0.375rem;
+  background: var(--muted);
+}
+
+.provider-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.provider-mark span {
+  color: var(--muted-foreground);
+  font-size: 0.65rem;
+}
+
+.card-genres {
+  overflow: hidden;
+  min-width: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.service-logo {
+  display: block;
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 1rem;
+}
+
+.empty-state {
+  min-height: 20rem;
+  border: 0;
+  background: var(--card);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .recommendation-card:hover {
+    background: var(--accent);
+  }
+}
+
+@media (max-width: 52rem) {
+  .toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .search-control {
+    width: 100%;
+  }
+  .filter-scroll {
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 0.125rem;
+    scrollbar-width: none;
+  }
+  .filter-scroll::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 64rem) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+  .recommendation-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 40rem) {
+  .page-shell {
+    width: min(100% - 1.5rem, 68rem);
+  }
+  .page-main {
+    padding-block: 3rem 4rem;
+  }
+  .intro {
+    margin-bottom: 2rem;
+  }
+  .toolbar {
+    margin-bottom: 3rem;
+  }
+  .recommendation-groups {
+    gap: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
